@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import model.Product
 
 class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
@@ -32,5 +33,7 @@ class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.productName.text = products[position].title
         holder.productDescription.text = products[position].description
+
+        Picasso.get().load(products[position].thumbnail).into(holder.productImage)
     }
 }
