@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProductsApp</string>
+    <string name="text_load_more">"Load More"</string>
 </resources>

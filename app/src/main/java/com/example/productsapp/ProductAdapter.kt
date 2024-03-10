@@ -1,5 +1,6 @@
 package com.example.productsapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,11 +8,19 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import model.Product
 
-class ProductAdapter(private val products: List<Product>) : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductAdapter(private val products: MutableList<Product>) :
+    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addProducts(newProducts: List<Product>) {
+        newProducts.forEach {
+            products.add(it)
+        }
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productItem: CardView = itemView.findViewById(R.id.cvProductItem)
