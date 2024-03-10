@@ -1,6 +1,8 @@
 package com.example.productsapp
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.DelicateCoroutinesApi
@@ -17,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var productAdapter: ProductAdapter
+    private lateinit var loadMoreButton: Button
+    private var skip = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +29,23 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rvProducts)
 
         fetchProducts()
+
+        loadMoreButton = findViewById(R.id.show_list_button)
+        loadMoreButton.setOnClickListener {
+            skip += ITEMS_PER_PAGE
+            fetchProducts()
+        }
+
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    loadMoreButton.visibility = View.VISIBLE
+                } else {
+                    loadMoreButton.visibility = View.GONE
+                }
+            }
+        })
     }
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -42,10 +63,15 @@ class MainActivity : AppCompatActivity() {
         val apiService = retrofit.create(ApiService::class.java)
 
         GlobalScope.launch(Dispatchers.Main) {
-            val response = apiService.getProducts(0, 20)
+            val response = apiService.getProducts(skip, ITEMS_PER_PAGE)
             val products = response.products
-            productAdapter = ProductAdapter(products)
-            recyclerView.adapter = productAdapter
+
+            if (::productAdapter.isInitialized) {
+                productAdapter.addProducts(products)
+            } else {
+                productAdapter = ProductAdapter(products)
+                recyclerView.adapter = productAdapter
+            }
         }
     }
 }
