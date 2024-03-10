@@ -2,14 +2,16 @@
 <resources>
 
     <style name="StyleTitle" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_alternates_semi_bold</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="android:textFontWeight">600</item>
         <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/text_title_size</item>
     </style>
 
     <style name="StyleDescription" parent="TextAppearance.AppCompat">
-        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
         <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">@dimen/text_description_size</item>
     </style>
 
 </resources>
