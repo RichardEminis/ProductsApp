@@ -19,11 +19,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <ImageView
                 android:id="@+id/ivProductImage"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="@dimen/image_height"
                 android:scaleType="centerCrop"
                 android:verticalScrollbarPosition="defaultPosition"
                 app:layout_constrainedWidth="true"
@@ -53,11 +52,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/main_indent"
                 android:layout_marginVertical="@dimen/main_indent"
+                android:background="@drawable/shape_rounded_variants"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivProductImage"
-                tools:ignore="MissingConstraints"
-                android:background="@drawable/shape_rounded_variants">
+                app:layout_constraintTop_toBottomOf="@+id/ivProductImage">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,7 +68,7 @@
                         style="@style/StyleElementDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/text_rating"/>
+                        android:text="@string/text_rating" />
 
                     <TextView
                         android:id="@+id/tvRatingCount"
@@ -78,9 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/main_indent"
-                        tools:text="rating product"/>
-
-
+                        tools:text="rating product" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,16 +98,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/main_indent"
-                        tools:text="price product"
-                        />
+                        tools:text="price product" />
 
                     <TextView
                         style="@style/StyleElementDescription"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/dollar"/>
-
-
+                        android:text="@string/dollar" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -135,14 +128,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/main_indent"
                         tools:text="brand product" />
-
                 </LinearLayout>
-
             </LinearLayout>
 
-
             <LinearLayout
-
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,8 +141,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
-                tools:ignore="NotSibling">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
                 <TextView
                     android:id="@+id/textDescription"
@@ -176,7 +164,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/show_list_button"
+                android:id="@+id/btnBackToList"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
