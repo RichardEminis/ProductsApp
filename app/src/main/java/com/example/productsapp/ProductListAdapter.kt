@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import model.Product
 
-class ProductAdapter(private val products: MutableList<Product>) :
-    RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+class ProductListAdapter(
+    private val products: MutableList<Product>,
+    private var itemClickListener: OnItemClickListener? = null
+) :
+    RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     @SuppressLint("NotifyDataSetChanged")
     fun addProducts(newProducts: List<Product>) {
@@ -20,6 +23,10 @@ class ProductAdapter(private val products: MutableList<Product>) :
             products.add(it)
         }
         notifyDataSetChanged()
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(product: Product)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -30,9 +37,9 @@ class ProductAdapter(private val products: MutableList<Product>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_product, parent, false)
-        return ViewHolder(inflater)
+        val inflater = LayoutInflater.from(parent.context)
+        val itemView = inflater.inflate(R.layout.item_product, parent, false)
+        return ViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
@@ -42,7 +49,13 @@ class ProductAdapter(private val products: MutableList<Product>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.productName.text = products[position].title
         holder.productDescription.text = products[position].description
-
+        holder.productItem.setOnClickListener {
+            itemClickListener?.onItemClick(products[position])
+        }
         Picasso.get().load(products[position].thumbnail).into(holder.productImage)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
     }
 }

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ProductFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:ignore="ScrollViewCount">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mainContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivProductImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="centerCrop"
+                android:verticalScrollbarPosition="defaultPosition"
+                app:layout_constrainedWidth="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvProductTitle"
+                style="@style/StyleImageTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_indent"
+                android:layout_marginBottom="@dimen/main_indent"
+                android:background="@drawable/shape_rounded_variants"
+                app:layout_constraintBottom_toBottomOf="@+id/ivProductImage"
+                app:layout_constraintStart_toStartOf="@+id/ivProductImage"
+                tools:text="Title" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/main_indent"
+                android:layout_marginVertical="@dimen/main_indent"
+                android:background="@drawable/shape_rounded_variants"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivProductImage">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_rating" />
+
+                    <TextView
+                        android:id="@+id/tvRatingCount"
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/main_indent"
+                        tools:text="rating product" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_price" />
+
+                    <TextView
+                        android:id="@+id/tvPriceCount"
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/main_indent"
+                        tools:text="price product" />
+
+                    <TextView
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dollar" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:layout_marginBottom="@dimen/main_indent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_brand" />
+
+                    <TextView
+                        android:id="@+id/tvBrand"
+                        style="@style/StyleElementDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/main_indent"
+                        tools:text="brand product" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/main_indent"
+                android:layout_marginTop="@dimen/main_indent"
+                android:background="@drawable/shape_rounded_variants"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <TextView
+                    android:id="@+id/textDescription"
+                    style="@style/StyleElementDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:layout_marginTop="@dimen/main_indent"
+                    android:text="@string/text_description" />
+
+                <TextView
+                    android:id="@+id/tvFragmentDescription"
+                    style="@style/StyleDescriptionProduct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/main_indent"
+                    android:text="description" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnBackToList"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_back_to_menu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
