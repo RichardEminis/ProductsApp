@@ -1,4 +1,14 @@
 # Products App
+
+## Описание
+Приложение Products — это приложение, которое позволяет пользователям просматривать список продуктов. Приложение предоставляет пользователям простой и интуитивно понятный интерфейс для просмотра подробной информации о продукте.
+
+##Функции
+1. Страница со списком всех товаров
+2. Страница сведений о продукте с описанием и информацией о ценах.
+
+---
+
 ## Description
 Products App is a application that allows users to browse. The application provides a simple and intuitive interface for users to view product details.
 
