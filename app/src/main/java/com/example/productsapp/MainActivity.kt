@@ -13,14 +13,12 @@ class MainActivity : AppCompatActivity() {
         get() = _binding
             ?: throw IllegalStateException("Binding for ActivityMainBinding must not be null")
 
-    private val fragmentManager = supportFragmentManager
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        fragmentManager.commit {
+        supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<ProductListFragment>(R.id.mainContainer)
             addToBackStack(null)
